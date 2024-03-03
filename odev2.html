@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastgele Sayı Üretici</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .range-container {
+        margin-bottom: 20px;
+    }
+    label {
+        font-size: 18px;
+        display: block;
+    }
+    input[type="range"] {
+        width: 80%;
+        margin: 10px auto;
+    }
+    #randomNumber {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="range-container">
+    <label for="minRange">Minimum Değer:</label>
+    <input type="range" id="minRange" min="0" max="100" value="0">
+    <span id="minValue">0</span>
+</div>
+
+<div class="range-container">
+    <label for="maxRange">Maksimum Değer:</label>
+    <input type="range" id="maxRange" min="0" max="100" value="100">
+    <span id="maxValue">100</span>
+</div>
+
+<button onclick="generateRandomNumber()">Rastgele Sayı Üret</button>
+<div id="randomNumber"></div>
+
+<script>
+    document.getElementById("minRange").addEventListener("input", function() {
+        document.getElementById("minValue").innerText = this.value;
+    });
+
+    document.getElementById("maxRange").addEventListener("input", function() {
+        document.getElementById("maxValue").innerText = this.value;
+    });
+
+    function generateRandomNumber() {
+        var min = parseInt(document.getElementById("minRange").value);
+        var max = parseInt(document.getElementById("maxRange").value);
+        var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        document.getElementById("randomNumber").innerText = "Rastgele Sayı: " + randomNumber;
+    }
+</script>
+
+</body>
+</html>

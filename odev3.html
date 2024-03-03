@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tahmin Oyunu</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    #result {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<label id="guessLabel">1. tahmini girin:</label>
+<input type="number" id="guessInput" min="0">
+<br><br>
+<button onclick="makeGuess()">Tahmin yap</button>
+<hr>
+<div id="result"></div>
+
+<script>
+    var randomNumber = Math.floor(Math.random() * 100) + 1; // Rastgele sayıyı oluştur
+    var guessCount = 1; // Tahmin sayısını takip et
+
+    function makeGuess() {
+        var guess = parseInt(document.getElementById("guessInput").value);
+
+        if (guess === randomNumber) {
+            document.getElementById("result").innerText = "Sayı " + guessCount + " adet denemede bulundu.";
+        } else if (guessCount === 7) {
+            document.getElementById("result").innerText = "Deneme hakkınız kalmadı. Kaybettiniz.";
+        } else if (guess < randomNumber) {
+            document.getElementById("result").innerText = "Daha büyük bir sayı girin.";
+        } else if (guess > randomNumber) {
+            document.getElementById("result").innerText = "Daha küçük bir sayı girin.";
+        }
+
+        guessCount++;
+        document.getElementById("guessLabel").innerText = guessCount + ". tahmini girin:";
+        document.getElementById("guessInput").value = ""; // Tahmin input'unu temizle
+    }
+</script>
+
+</body>
+</html>
