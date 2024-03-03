@@ -30,8 +30,8 @@
 <div id="result"></div>
 
 <script>
-    var randomNumber = Math.floor(Math.random() * 100) + 1; // Rastgele sayıyı oluştur
-    var guessCount = 1; // Tahmin sayısını takip et
+    var randomNumber = Math.floor(Math.random() * 100) + 1; 
+    var guessCount = 1; 
 
     function makeGuess() {
         var guess = parseInt(document.getElementById("guessInput").value);
@@ -48,7 +48,7 @@
 
         guessCount++;
         document.getElementById("guessLabel").innerText = guessCount + ". tahmini girin:";
-        document.getElementById("guessInput").value = ""; // Tahmin input'unu temizle
+        document.getElementById("guessInput").value = ""; 
     }
 </script>
 
